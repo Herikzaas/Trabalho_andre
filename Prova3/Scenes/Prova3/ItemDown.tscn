@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://dy0gejp0lmxul"]
+
+[ext_resource type="Texture2D" uid="uid://c1ovkud8rt1ll" path="res://Assets/Traps/Saw/On (38x38).png" id="1_f643e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aab10"]
+atlas = ExtResource("1_f643e")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r80a"]
+atlas = ExtResource("1_f643e")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyxpf"]
+atlas = ExtResource("1_f643e")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omb2g"]
+atlas = ExtResource("1_f643e")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ud52"]
+atlas = ExtResource("1_f643e")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8520a"]
+atlas = ExtResource("1_f643e")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebfvl"]
+atlas = ExtResource("1_f643e")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr31a"]
+atlas = ExtResource("1_f643e")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs387"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aab10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r80a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyxpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omb2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ud52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8520a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebfvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr31a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="ItemDown" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qs387")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.332138
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
