@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj7dc8agaw4j0"]
+
+[ext_resource type="Texture2D" uid="uid://dj6y8kpna5o6f" path="res://Assets/Other/Dust Particle.png" id="1_18qwt"]
+[ext_resource type="Script" path="res://Scenes/Prova3/dust.gd" id="1_edlqp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jm1hg"]
+radius = 5.09902
+
+[node name="Dust" type="Area2D"]
+script = ExtResource("1_edlqp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_18qwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jm1hg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

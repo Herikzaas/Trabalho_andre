@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dda5cjhbx1ph0"
+path="res://.godot/imported/23. White Palace.mp3-801f0d924d0f6c3d053bce8f9e658da7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/23. White Palace.mp3"
+dest_files=["res://.godot/imported/23. White Palace.mp3-801f0d924d0f6c3d053bce8f9e658da7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

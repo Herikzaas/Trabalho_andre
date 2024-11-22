@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dy0gejp0lmxul"]
+[gd_scene load_steps=13 format=3 uid="uid://dy0gejp0lmxul"]
 
+[ext_resource type="Script" path="res://Scenes/Prova3/item_down.gd" id="1_0ti3l"]
 [ext_resource type="Texture2D" uid="uid://c1ovkud8rt1ll" path="res://Assets/Traps/Saw/On (38x38).png" id="1_f643e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aab10"]
@@ -66,7 +67,12 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2b2t"]
+radius = 20.025
+
 [node name="ItemDown" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_0ti3l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qs387")
@@ -75,3 +81,6 @@ autoplay = "idle"
 frame_progress = 0.332138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q2b2t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

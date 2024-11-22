@@ -40,5 +40,5 @@ func setCamera():
 	if $"/root/Global".fase == 2:
 		$Camera1.limit_right = 640
 	if $"/root/Global".fase == 3:
-		$Camera1.limit_right = 1500
+		$Camera1.limit_right = 1750
 	
