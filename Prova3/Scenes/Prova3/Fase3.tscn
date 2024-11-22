@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://c3s3hnpc6sw1h"]
+[gd_scene load_steps=42 format=4 uid="uid://c3s3hnpc6sw1h"]
 
 [ext_resource type="Script" path="res://Scenes/Prova3/fase_3.gd" id="1_fcjtb"]
 [ext_resource type="Texture2D" uid="uid://kpcn1gqkswf2" path="res://Assets/Terrain/Terrain (16x16).png" id="1_t58a3"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dda5cjhbx1ph0" path="res://Assets/Audio/23. White Palace.mp3" id="6_ld2cd"]
 [ext_resource type="Texture2D" uid="uid://df6s6epa3whj6" path="res://Assets/Checkpoints/End/End (Pressed) (64x64).png" id="7_qta0m"]
 [ext_resource type="PackedScene" uid="uid://bj7dc8agaw4j0" path="res://Scenes/Prova3/dust.tscn" id="8_ceqtc"]
+[ext_resource type="PackedScene" uid="uid://blk2251on54xi" path="res://Scenes/Prova3/boss.tscn" id="9_3iy2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk7mk"]
 texture = ExtResource("1_t58a3")
@@ -699,3 +700,6 @@ shape = SubResource("RectangleShape2D_miyiq")
 
 [node name="Dust" parent="." instance=ExtResource("8_ceqtc")]
 position = Vector2(1168, 260)
+
+[node name="Boss" parent="." instance=ExtResource("9_3iy2d")]
+position = Vector2(1643, 203)
