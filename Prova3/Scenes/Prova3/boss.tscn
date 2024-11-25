@@ -1,7 +1,32 @@
-[gd_scene load_steps=23 format=3 uid="uid://blk2251on54xi"]
+[gd_scene load_steps=34 format=3 uid="uid://blk2251on54xi"]
 
+[ext_resource type="Script" path="res://Scenes/Prova3/boss.gd" id="1_5ywge"]
 [ext_resource type="Texture2D" uid="uid://frpgpdbeym5y" path="res://Assets/Enemies/Plant/Attack (44x42).png" id="1_celu0"]
 [ext_resource type="Texture2D" uid="uid://cwyaov2vlppgg" path="res://Assets/Enemies/Plant/Idle (44x42).png" id="2_n2jt4"]
+[ext_resource type="Texture2D" uid="uid://djb857niv021u" path="res://Assets/Enemies/Plant/Hit (44x42).png" id="2_o35a6"]
+[ext_resource type="PackedScene" uid="uid://cn165das2mt5b" path="res://Scenes/head_hit.tscn" id="3_jjkxk"]
+[ext_resource type="PackedScene" uid="uid://86vdruqf7hhu" path="res://Scenes/hit_player.tscn" id="4_3v4qt"]
+[ext_resource type="PackedScene" uid="uid://bj4bf18s47yb8" path="res://Scenes/Prova3/bullet.tscn" id="7_4nuxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cepud"]
+atlas = ExtResource("2_o35a6")
+region = Rect2(0, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5w1"]
+atlas = ExtResource("2_o35a6")
+region = Rect2(44, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0uq8"]
+atlas = ExtResource("2_o35a6")
+region = Rect2(88, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pgjq"]
+atlas = ExtResource("2_o35a6")
+region = Rect2(132, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urrho"]
+atlas = ExtResource("2_o35a6")
+region = Rect2(176, 0, 44, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufrbh"]
 atlas = ExtResource("1_celu0")
@@ -83,6 +108,26 @@ region = Rect2(440, 0, 44, 42)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_cepud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0uq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pgjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urrho")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ufrbh")
 }, {
 "duration": 1.0,
@@ -106,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_75vw5")
 }],
-"loop": true,
+"loop": false,
 "name": &"atack",
 "speed": 5.0
 }, {
@@ -149,12 +194,41 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Boss" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7035h"]
+size = Vector2(20, 31)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_5ywge")
+
+[node name="Animacao" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nvygy")
 animation = &"atack"
 autoplay = "idle"
-frame_progress = 0.329064
+
+[node name="HeadHit" parent="." instance=ExtResource("3_jjkxk")]
+position = Vector2(-11, -12)
+scale = Vector2(2, 2)
+
+[node name="HitPlayer" parent="." instance=ExtResource("4_3v4qt")]
+position = Vector2(-5, -9)
+scale = Vector2(3, 3)
+
+[node name="HitPlayer2" parent="." instance=ExtResource("4_3v4qt")]
+position = Vector2(15, -9)
+scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 5.5)
+shape = SubResource("RectangleShape2D_7035h")
+
+[node name="atirar" type="RayCast2D" parent="."]
+target_position = Vector2(-208, 0)
+
+[node name="bullet" parent="." instance=ExtResource("7_4nuxe")]
+position = Vector2(-8, -6)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="animation_finished" from="Animacao" to="." method="_on_animacao_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
