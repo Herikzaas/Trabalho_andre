@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://blk2251on54xi"]
+[gd_scene load_steps=35 format=3 uid="uid://blk2251on54xi"]
 
 [ext_resource type="Script" path="res://Scenes/Prova3/boss.gd" id="1_5ywge"]
 [ext_resource type="Texture2D" uid="uid://frpgpdbeym5y" path="res://Assets/Enemies/Plant/Attack (44x42).png" id="1_celu0"]
@@ -151,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_75vw5")
 }],
-"loop": false,
+"loop": true,
 "name": &"atack",
 "speed": 5.0
 }, {
@@ -197,6 +197,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7035h"]
 size = Vector2(20, 31)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcbam"]
+bg_color = Color(0.953154, 0.394182, 0.357412, 1)
+
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_5ywge")
 
@@ -230,5 +233,16 @@ position = Vector2(-8, -6)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -23.0
+offset_right = 21.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qcbam")
+max_value = 10.0
+step = 1.0
+show_percentage = false
+
 [connection signal="animation_finished" from="Animacao" to="." method="_on_animacao_animation_finished"]
+[connection signal="body_entered" from="HeadHit" to="." method="_on_head_hit_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

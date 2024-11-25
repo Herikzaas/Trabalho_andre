@@ -677,6 +677,7 @@ position = Vector2(1706, 451)
 position = Vector2(1666, 451)
 
 [node name="Player" parent="." instance=ExtResource("2_1g2fs")]
+position = Vector2(64, 285)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ld2cd")

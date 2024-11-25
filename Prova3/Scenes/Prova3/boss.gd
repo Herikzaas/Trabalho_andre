@@ -12,8 +12,13 @@ func _physics_process(delta: float) -> void:
 		if $atirar.is_colliding():
 			$Timer.start()
 			auxTiro = true
-
-
+	else :
+		animacao.play("atack")
+		
+	$ProgressBar.value = vida
+	
+	if vida <= 0 :
+		queue_free()
 func _on_timer_timeout() -> void:
 	var ti = tiro.instantiate()
 	self.add_child(ti)
@@ -21,5 +26,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_animacao_animation_finished() -> void:
-	if animacao.animation == "Hit" :
-		print("aiai")
+	pass
+
+
+func _on_head_hit_body_entered(body: Node2D) -> void:
+	vida -= 1
